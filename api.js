@@ -162,7 +162,7 @@ app.post('/healthcheck',(req,res,next)=>{
   })
 })
 app.post('/Tarcelogs',(req,res,next)=>{
-    let sql = `INSERT INTO tr_logs (user_id,location,q1,q2,q3,q4,fever,cough,bodypains,breathing,sorethroat,temp,footprint) VALUES ('${req.body.user}','${req.body.location}','${req.body.q1}','${req.body.q2}','${req.body.q3}','${req.body.q4}','${req.body.symptom1}','${req.body.symptom2}','${req.body.symptom3}','${req.body.symptom4}','${req.body.symptom5}','${req.body.temp}','${req.headers}')`;
+    let sql = `INSERT INTO tr_logs (user_id,location,q1,q2,q3,q4,fever,cough,bodypains,breathing,sorethroat,temp,footprint) VALUES ('${req.body.user}','${req.body.location}','${req.body.q1}','${req.body.q2}','${req.body.q3}','${req.body.q4}','${req.body.symptom1}','${req.body.symptom2}','${req.body.symptom3}','${req.body.symptom4}','${req.body.symptom5}','${req.body.temp}','${JSON.stringify(req.headers)}')`;
     connection.query(sql, (err,result) =>{
         if(err) throw err;
         console.log(result);
