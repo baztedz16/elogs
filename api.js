@@ -172,7 +172,7 @@ app.post('/Tarcelogs',(req,res,next)=>{
 })
 app.post('/insertvisitor',(req,res,next)=>{
     // let sql = `INSERT INTO acc_user (fname,password,username) VALUES ('${req.body.name}','${req.body.password}','${req.body.phone}')`;
-    let sql = `INSERT INTO acc_user (fname,password,username,phone) SELECT * FROM (SELECT '${req.body.name}', '${req.body.password}', '${req.body.phone}${req.body.name}', '${req.body.phone}') AS tmp WHERE NOT EXISTS ( SELECT username FROM acc_user WHERE username = '${req.body.phone}' ) LIMIT 1`;
+    let sql = `INSERT INTO acc_user (fname,password,username,phone) SELECT * FROM (SELECT '${req.body.name}', '${req.body.password}', '${req.body.phone}${req.body.name}', '${req.body.phone}') AS tmp WHERE NOT EXISTS ( SELECT username FROM acc_user WHERE phone = '${req.body.phone}' ) LIMIT 1`;
     connection.query(sql, (err,result) =>{
         if(err) throw err;
         console.log(sql);
